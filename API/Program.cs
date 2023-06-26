@@ -14,7 +14,16 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddCors(options => options.AddPolicy("CorsPolicy",
+            policy =>
+            {
+                policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
+            }
+        )
+);
 var app = builder.Build();
+
+app.UseCors("CorsPolicy");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -22,7 +31,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 app.UseAuthorization();
 
 app.MapControllers();
