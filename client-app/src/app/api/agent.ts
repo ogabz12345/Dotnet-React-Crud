@@ -10,7 +10,7 @@ axios.defaults.baseURL = 'http://localhost:5000/api/v1';
 
 axios.interceptors.response.use(async (response) => {
   try {
-    await sleep(1000);
+    await sleep(500);
     return response;
   } catch (error) {
     return await Promise.reject(error);
