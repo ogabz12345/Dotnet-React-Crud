@@ -13,7 +13,6 @@ const ActivityForm = () => {
   const navigate = useNavigate();
 
   const {
-    selectedActivity,
     loading,
     createActivity,
     updateActivity,

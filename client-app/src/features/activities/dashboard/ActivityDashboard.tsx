@@ -4,6 +4,7 @@ import { useStore } from '../../../app/stores/store';
 import { observer } from 'mobx-react-lite';
 import { useEffect } from 'react';
 import LoadingComponent from '../../../app/layout/LoadingComponent';
+import ActivitiesFilters from './ActivitiesFilters';
 
 const ActivityDashboard = () => {
   const { activityStore } = useStore();
@@ -15,7 +16,6 @@ const ActivityDashboard = () => {
   if (activityStore.loadingInitial)
     return <LoadingComponent content='Loading app' />;
 
-  const { selectedActivity, editMode } = activityStore;
   return (
     <Grid>
       <Grid.Column width='10'>
@@ -23,7 +23,7 @@ const ActivityDashboard = () => {
       </Grid.Column>
 
       <Grid.Column width='6'>
-       <h2>Activity filters</h2>
+        <ActivitiesFilters />
       </Grid.Column>
     </Grid>
   );
